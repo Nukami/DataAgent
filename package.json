@@ -1,0 +1,41 @@
+{
+  "name": "dataagent",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rimraf build",
+    "build": "tsc -p tsconfig.json",
+    "start": "node --enable-source-maps build",
+    "go": "yarn clean && yarn build && yarn start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nukami/DataAgent.git"
+  },
+  "author": "nukami",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nukami/DataAgent/issues"
+  },
+  "homepage": "https://github.com/Nukami/DataAgent#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.9.0",
+    "@typescript-eslint/parser": "^6.9.0",
+    "eslint": "^8.52.0",
+    "eslint-config-prettier": "^9.0.0",
+    "prettier": "^3.0.3",
+    "rimraf": "^5.0.5",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "discord.js": "^14.13.0",
+    "exceljs": "^4.4.0",
+    "glob": "^10.3.10",
+    "node-global-proxy": "^1.0.1",
+    "path": "^0.12.7",
+    "pptxgenjs": "^3.12.0",
+    "undici": "^5.27.0",
+    "yaml": "^2.3.3"
+  }
+}
