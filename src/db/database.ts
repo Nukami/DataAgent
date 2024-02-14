@@ -34,10 +34,10 @@ export class Database {
     const workbook = new excel.Workbook();
     const wb = await workbook.xlsx.readFile(path);
     if (!isValidExcelFile(wb)) {
-      throw new Error('Invalid excel file');
+      throw new Error(`Invalid excel file ${path}`);
     }
     const sheet = wb.getWorksheet(1);
-    if (!sheet) throw new Error('Invalid excel file');
+    if (!sheet) throw new Error(`Invalid excel file ${path}`);
     const productions: Production[] = [];
     for (let i = 2; i <= sheet.rowCount; i++) {
       const row = sheet.getRow(i);

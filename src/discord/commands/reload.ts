@@ -30,7 +30,11 @@ export class Reload extends CommandInteractionHandler {
 
     if (interaction.channel !== null) {
       await interaction.reply('开始重新加载数据');
-      this.reloadAll(interaction.channel);
+
+      this.reloadAll(interaction.channel).catch(e => {
+        interaction.reply(`重新加载数据失败，请检查相关文件格式，修改后重新上传，再重试加载\n${e.message}`);
+      });
+
       return;
     }
 

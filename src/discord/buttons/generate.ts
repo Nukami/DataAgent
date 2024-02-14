@@ -28,7 +28,7 @@ export class Generate extends ButtonInteractionHandler {
     if (!interaction.isButton()) return;
     if (interaction.customId !== this.customId) return;
     const resultId = Number(interaction.component.label?.replace('生成 - ', '') ?? '0');
-    const productions = GlobalStorage.getInstance().getSearchResult(resultId);
+    const productions = await GlobalStorage.getInstance().getSearchResult(resultId);
     if (productions.length === 0) {
       await interaction.reply('没有符合的结果');
       return;

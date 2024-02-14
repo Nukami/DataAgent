@@ -13,15 +13,14 @@ import { ButtonInteractionHandler } from './discord/button-interaction-handler';
 
 const globalStorage = GlobalStorage.getInstance();
 
-// TODO: move to config file
+const config: Config = globalStorage.getConfig();
+
 proxy.setConfig({
-  http: 'http://192.168.50.101:7890',
-  https: 'http://192.168.50.101:7890',
+  http: config.proxy.url ?? '',
+  https: config.proxy.url ?? '',
 });
 
-proxy.start();
-
-const config: Config = globalStorage.getConfig();
+if (config.proxy.enable) proxy.start();
 
 const db: Database = globalStorage.getDatabase();
 db.loadAll();
@@ -29,7 +28,7 @@ db.loadAll();
 const agent: ProxyAgent = new ProxyAgent(config.proxy.url);
 const client: Client = new Client({
   intents: [GatewayIntentBits.Guilds],
-  rest: { version: '10', agent },
+  rest: { version: '10', agent: config.proxy.enable ? agent : undefined },
 });
 
 async function registerDiscordCommands(commands: CommandInteractionHandler[]) {

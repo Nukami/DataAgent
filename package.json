@@ -35,6 +35,7 @@
     "node-global-proxy": "^1.0.1",
     "path": "^0.12.7",
     "pptxgenjs": "^3.12.0",
+    "redis": "^4.6.13",
     "undici": "^5.27.0",
     "yaml": "^2.3.3"
   }
